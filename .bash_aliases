@@ -9,6 +9,7 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias tree='tree -L 2'
+alias fn='functions'
 melddiff() {
 	meld <(eval "$1") <(eval "$2")
 }
