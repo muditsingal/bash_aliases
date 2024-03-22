@@ -10,6 +10,9 @@ alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias tree='tree -L 2'
 alias fn='functions'
+alias dps='docker ps -a'
+alias dil='docker image ls'
+alias dis='docker image ls'
 melddiff() {
 	meld <(eval "$1") <(eval "$2")
 }
