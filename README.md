@@ -10,4 +10,28 @@ if [[ -e $HOME/.bash_aliases ]]; then
 fi
 ```
 
+You can also add command to neofetch for every terminal window:
+```
+neofetch | lolcat
+```
+
+
 Be careful with the $HOME variable as it is different for different users and may not work for certain users in the system (especially for the root user).
+
+Packages to install on fresh releases:
+
+**For all distros**
+```
+neofetch
+lolcat
+```
+
+**For Arch-based Distros**
+```
+yay
+sweet-theme-full-git
+candy-icons-git
+octopi
+exa
+variety
+```
