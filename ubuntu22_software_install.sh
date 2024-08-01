@@ -44,7 +44,7 @@ sudo apt install obs-studio -y
 # Install Adobe Reader
 sudo apt install gdebi-core wget -y
 wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb
-sudo gdebi AdbeRdr9.5.5-1_i386linux_enu.deb
+sudo gdebi -y AdbeRdr9.5.5-1_i386linux_enu.deb
 
 # Install QGroundControl
 sudo apt remove modemmanager -y
@@ -75,6 +75,8 @@ rm zoom.deb
 
 # Install xclip
 sudo apt install xclip
+
+sudo apt autoremove
 
 echo "Installation of all software completed successfully!"
 
