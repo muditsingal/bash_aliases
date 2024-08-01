@@ -1,0 +1,34 @@
+SSH key config:
+
+1. Create a .ssh folder in home directory (if not already present):
+mkdir ~/.ssh
+
+2. Paste this in the ubuntu terminal, choose .ssh folder to save the keys with appropriate file name (e.g. id_rsa). Remember your pass phrase:
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+3. Add ssh key to ssh agent:
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+
+4. Copy ssh key from id_rsa.pub file and paste it into github -> SSH and GPG keys -> Add new SSH key. Give appropriate title.
+
+5. Check your setting by:
+ssh -T git@github.com
+
+If you get:
+Hi <username>! You've successfully authenticated, but GitHub does not provide shell access.
+
+Then, congratulations! You have passed the test.
+
+
+Debugging: 
+If you have messed up and have multiple ssh keys like me:
+ssh -i ~/.ssh/your_key_file -T git@github.com
+
+If the above works, then you can be saved by adding the below lines in config file of .ssh:
+
+nano ~/.ssh/config
+
+Paste the below lines:
+Host *
+  IdentityFile ~/.ssh/your_default_key
