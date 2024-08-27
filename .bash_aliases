@@ -15,6 +15,8 @@ alias dil='docker image ls'
 alias dis='docker image ls'
 alias to_clip='xclip -sel clip'
 alias toclip='xclip -sel clip'
+alias qgc='./QGroundControl.AppImage'
+alias QGC='./QGroundControl.AppImage'
 melddiff() {
 	meld <(eval "$1") <(eval "$2")
 }
