@@ -17,6 +17,7 @@ alias to_clip='xclip -sel clip'
 alias toclip='xclip -sel clip'
 alias qgc='./QGroundControl.AppImage'
 alias QGC='./QGroundControl.AppImage'
+alias git_key_refresh='eval $(ssh-agent -s) && ssh-add ~/.ssh/*'
 melddiff() {
 	meld <(eval "$1") <(eval "$2")
 }
