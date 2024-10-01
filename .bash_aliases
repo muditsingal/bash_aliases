@@ -1,5 +1,6 @@
 alias cm='catkin_make'
 alias la='ls -al'
+alias ll='ls -l'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
