@@ -27,6 +27,7 @@ alias key_refresh_git='eval $(ssh-agent -s) && ssh-add ~/.ssh/*'
 alias key_git_refresh='eval $(ssh-agent -s) && ssh-add ~/.ssh/*'
 alias git_key_check='ssh -T git@github.com'
 alias check_git_key='ssh -T git@github.com'
+alias rmb='rm -rf build/'
 melddiff() {
 	meld <(eval "$1") <(eval "$2")
 }
