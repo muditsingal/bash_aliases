@@ -1,5 +1,5 @@
 alias cm='catkin_make'
-alias la='ls -al'
+alias la='ls -Al'
 alias ll='ls -l'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
