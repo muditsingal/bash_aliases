@@ -10,20 +10,12 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 sudo apt update
 sudo apt install brave-browser -y
 
-# Install Wine
-sudo dpkg --add-architecture i386
-sudo mkdir -pm755 /etc/apt/keyrings
-sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
-sudo apt update
-sudo apt install --install-recommends winehq-stable -y
-
 # Install Git
 sudo apt install git -y
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh ./get-docker.sh --dry-run
+sudo sh ./get-docker.sh
 
 # Install Neofetch
 sudo apt install neofetch -y
@@ -40,11 +32,6 @@ sudo apt install ffmpeg -y
 sudo add-apt-repository ppa:obsproject/obs-studio -y
 sudo apt update
 sudo apt install obs-studio -y
-
-# Install Adobe Reader
-sudo apt install gdebi-core wget -y
-wget ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb
-sudo gdebi -y AdbeRdr9.5.5-1_i386linux_enu.deb
 
 # Install QGroundControl
 sudo apt remove modemmanager -y
@@ -116,7 +103,8 @@ sudo apt install -y \
   python3-argcomplete \
   python3-empy \
   python3-netifaces \
-  python3-yaml
+  python3-yaml \
+  python-is-python3
 
 # Install ROS 2 Humble desktop
 sudo apt update
@@ -133,9 +121,18 @@ rosdep update
 
 echo "ROS 2 Humble Desktop Full installation completed successfully!"
 
+# Install MAVROS and dependencies
+sudo apt update
+sudo apt install ros-humble-visualization-msgs ros-humble-vision-msgs
+wget https://raw.githubusercontent.com/mavlink/mavros/ros2/mavros/scripts/install_geographiclib_datasets.sh
+./install_geographiclib_datasets.sh
+rm install_geographiclib_datasets.sh
 
+sudo apt-get install ros-humble-mavros ros-humble-mavros-extras ros-humble-mavros-msgs
 
+# Cleanup and sourcing
+sudo apt update
 sudo apt autoremove
+source ~/.bashrc
 
 echo "Installation of all software completed successfully!"
-
