@@ -34,3 +34,8 @@ melddiff() {
 vdiff() {
 	vimdiff <(eval "$1") <(eval "$2")
 }
+alias rviz='rviz2'
+alias au='sudo apt update'
+alias sau='sudo apt update'
+alias ws='source ~/ros2_ws/install/setup.bash'
+alias rs='source /opt/ros/humble/setup.bash'
