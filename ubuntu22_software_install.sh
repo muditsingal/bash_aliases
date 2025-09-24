@@ -61,7 +61,7 @@ sudo apt install ./zoom.deb -y
 rm zoom.deb
 
 # Install xclip
-sudo apt install xclip
+sudo apt install xclip -y
 
 ### Install ROS 2 Humble desktop full
 # Setup locale
@@ -123,12 +123,12 @@ echo "ROS 2 Humble Desktop Full installation completed successfully!"
 
 # Install MAVROS and dependencies
 sudo apt update
-sudo apt install ros-humble-visualization-msgs ros-humble-vision-msgs
+sudo apt install ros-humble-visualization-msgs ros-humble-vision-msgs -y
 wget https://raw.githubusercontent.com/mavlink/mavros/ros2/mavros/scripts/install_geographiclib_datasets.sh
-./install_geographiclib_datasets.sh
+sudo ./install_geographiclib_datasets.sh
 rm install_geographiclib_datasets.sh
 
-sudo apt-get install ros-humble-mavros ros-humble-mavros-extras ros-humble-mavros-msgs
+sudo apt-get install ros-humble-mavros ros-humble-mavros-extras ros-humble-mavros-msgs -y
 
 # Cleanup and sourcing
 sudo apt update
