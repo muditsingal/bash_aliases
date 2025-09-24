@@ -10,12 +10,34 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 sudo apt update
 sudo apt install brave-browser -y
 
-# Install Git
-sudo apt install git -y
+# Need to install google chrome manually
+
+sudo apt install -y \
+  build-essential \
+  cmake \
+  git \
+  htop \
+  python3-colcon-common-extensions \
+  python3-flake8 \
+  python3-pip \
+  python3-pytest \
+  python3-setuptools \
+  python3-vcstool \
+  wget \
+  libbullet-dev \
+  python3-rosdep \
+  python3-argcomplete \
+  python3-empy \
+  python3-netifaces \
+  python3-yaml \
+  python-is-python3 \
+  libqt5webkit5
 
 # Install Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh
+sudo groupadd docker
+sudo usermod -aG docker $USER
 
 # Install Neofetch
 sudo apt install neofetch -y
@@ -34,12 +56,16 @@ sudo apt update
 sudo apt install obs-studio -y
 
 # Install QGroundControl
+sudo usermod -aG dialout "$(id -un)"
 sudo apt remove modemmanager -y
-sudo add-apt-repository universe
+sudo apt remove --purge modemmanager
+sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
+sudo apt install libfuse2 -y
+sudo apt install libxcb-xinerama0 libxkbcommon-x11-0 libxcb-cursor-dev -y
 sudo apt update
-wget https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage
-chmod +x QGroundControl.AppImage
-sudo mv QGroundControl.AppImage /usr/local/bin/qgroundcontrol
+wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl-x86_64.AppImage
+chmod +x QGroundControl-x86_64.AppImage
+sudo mv QGroundControl-x86_64.AppImage QGroundControl.AppImage
 
 # Install Steam
 sudo apt install steam -y
@@ -59,6 +85,20 @@ sudo apt install spotify-client -y
 wget -O zoom.deb https://zoom.us/client/latest/zoom_amd64.deb
 sudo apt install ./zoom.deb -y
 rm zoom.deb
+
+# Install nordvpn
+sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh) -p nordvpn-gui
+sudo groupadd nordvpn
+sudo usermod -aG nordvpn $USER
+
+# Install foxglove
+wget https://get.foxglove.dev/desktop/latest/foxglove-studio-latest-linux-amd64.deb
+sudo apt install ./foxglove-studio-*.deb
+sudo apt update && sudo apt install foxglove-studio
+
+# Install global protect VPN
+wget https://terpware.umd.edu/Deliverables/401/Download
+sudo dpkg -i GlobalProtect*.deb
 
 # Install xclip
 sudo apt install xclip -y
@@ -86,25 +126,6 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf] http://packages.ros.org/ros2/ubun
 
 # Install development tools and ROS tools
 sudo apt update
-
-sudo apt install -y \
-  build-essential \
-  cmake \
-  git \
-  python3-colcon-common-extensions \
-  python3-flake8 \
-  python3-pip \
-  python3-pytest \
-  python3-setuptools \
-  python3-vcstool \
-  wget \
-  libbullet-dev \
-  python3-rosdep \
-  python3-argcomplete \
-  python3-empy \
-  python3-netifaces \
-  python3-yaml \
-  python-is-python3
 
 # Install ROS 2 Humble desktop
 sudo apt update
@@ -134,5 +155,8 @@ sudo apt-get install ros-humble-mavros ros-humble-mavros-extras ros-humble-mavro
 sudo apt update
 sudo apt autoremove
 source ~/.bashrc
+
+git config --global user.email "muditsingal@gmail.com"
+git config --global user.name "Mudit Singal"
 
 echo "Installation of all software completed successfully!"
