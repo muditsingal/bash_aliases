@@ -11,7 +11,7 @@
 # Run as your normal user (not root) — it calls sudo where needed.
 # Each phase is a function; comment out a call at the bottom to skip it.
 
-set -euo pipefail
+set -eu pipefail
 
 log() { echo -e "\n==> $*\n"; }
 
@@ -101,8 +101,7 @@ phase2_packages() {
     gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly \
     gstreamer1.0-tools gstreamer1.0-vaapi \
     libzmq3-dev libflashrom1 libftdi1-2 libfuse2 \
-    python3-gi python3-pip python3-tk python3-venv python-is-python3 \
-    globalprotect
+    python3-gi python3-pip python3-tk python3-venv python-is-python3
 
   # NOTE: on the old (Humble/Fortress) machine these were libgz-transport11-*
   # dev headers, used for building against Gazebo Transport directly. Jazzy
@@ -302,7 +301,7 @@ phase7_checks() {
     || echo "  ! ros2 pkg list check failed"
 
   echo "--- services ---"
-  systemctl status docker chrony tailscaled ufw globalprotect --no-pager \
+  systemctl status docker chrony tailscaled ufw --no-pager \
     || true
 }
 
